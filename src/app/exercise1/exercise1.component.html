@@ -1,0 +1,24 @@
+<div fxLayout="row" fxFlexFill fxFlexAlign="center center" class="exercise">
+  <mat-card class="example-card">
+    <form fxLayout="row" fxLayout="column" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field>
+        <input matInput placeholder="Liczba 1 (a)" ngModel name="number1" required pattern="^\-?[0-9]+$" #number1="ngModel">
+        <mat-error *ngIf="number1.hasError('required')">Proszę podać liczbę</mat-error>
+        <mat-error *ngIf="number1.hasError('pattern')">To nie jest liczba</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Liczba 2 (b)" ngModel name="number2" required pattern="^\-?[0-9]+$" #number2="ngModel">
+        <mat-error *ngIf="number2.hasError('required')">Proszę podać liczbę</mat-error>
+        <mat-error *ngIf="number2.hasError('pattern')">To nie jest liczba</mat-error>
+      </mat-form-field>
+      <span>a + a * a – b + b * b = {{ result }}</span>
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Oblicz!</button>
+      <div class="result">
+        <mat-list role="list" *ngIf="result >= 0">
+          <mat-list-item role="listitem" *ngFor="let item of resultArray; index as i;">{{ i }}</mat-list-item>
+        </mat-list>
+        <p *ngIf="result < 0">Nie ma możliwości wygenerowania listy</p>
+      </div>
+    </form>
+  </mat-card>
+</div>

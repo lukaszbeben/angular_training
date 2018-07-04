@@ -1,0 +1,13 @@
+mat-card {
+    max-width: 30.000em;
+    margin: auto;
+    flex: 1;
+}
+
+mat-form-field {
+    margin-bottom: 0.938em;
+}
+
+span {
+    margin-bottom: 1.250em;
+}

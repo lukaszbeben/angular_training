@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Edycja</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.newAnswer" placeholder="Twoja odpowiedź">
+  </mat-form-field>
+  <mat-form-field>
+        <mat-select placeholder="Wybierz poprawą odpowiedź" [(ngModel)]="data.rightAnswer">
+          <mat-option *ngFor="let answer of data.question.answers; index as i;" [value]="i">
+            {{ answer }}
+          </mat-option>
+        </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions fxLayout="row" fxFlexFill fxLayoutAlign="end">
+  <button mat-raised-button color="accent" (click)="addNewAnswer(data.question.answers, data.newAnswer)">Dodaj</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="data" cdkFocusInitial>Zapisz</button>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Anuluj</button>
+</div>

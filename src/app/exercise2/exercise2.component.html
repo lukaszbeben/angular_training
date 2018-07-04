@@ -1,0 +1,33 @@
+<div fxLayout="row" fxFlexFill fxFlexAlign="center center" class="exercise">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="row" fxLayout="column">
+                <mat-spinner diameter="60" *ngIf="loader"></mat-spinner>
+                <div class="image" *ngIf="!timeout">
+                    <img [src]="questions[random].image" (load)="hideImage()">
+                </div>
+                <div *ngIf="timeout && !success">
+                    <small>Poziom trudności: {{ questions[random].difficulty }}</small>
+                    <h1>{{ questions[random].question }}</h1>
+                    <mat-list role="list">
+                        <mat-list-item [ngClass]="{'active' : userAnswer === i, 'good' : userAnswer === questions[random].rightAnswer && showStatus && userAnswer === i, 'wrong' : userAnswer !== questions[random].rightAnswer && showStatus && userAnswer === i}" role="listitem" (click)="userAnswer = i" *ngFor="let answer of questions[random].answers; index as i;"><span>{{ answer }}</span><mat-icon>check</mat-icon><mat-icon>close</mat-icon></mat-list-item>
+                    </mat-list>
+                </div>
+                <div *ngIf="success">
+                    <h1>Znakomicie!</h1>
+                    <p>Udało Ci się odpowiedzieć na wszystkie pytania!</p>
+                    <p>Jesteś mistrzem!</p>
+                    <mat-divider></mat-divider>
+                    <div fxLayout="column" fxFlexFill fxFlexAlign="center center">
+                        <h1>Czy chcesz powtórzyć test ponownie?</h1>
+                        <button fxLayoutAlign="center center" mat-fab color="primary" (click)="resetQuestions()">TAK</button>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxFlexFill fxLayoutAlign="end" *ngIf="timeout && !success">
+            <button mat-raised-button color="warn" (click)="openDialog(questions[random])">Edytuj</button>
+            <button mat-raised-button color="primary" [disabled]="userAnswer === undefined" (click)="changeQuestion(questions[random])">Następne pytanie</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

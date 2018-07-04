@@ -1,0 +1,134 @@
+mat-card {
+    max-width: 45.000em;
+    margin: auto;
+    flex: 1;
+}
+
+mat-icon {
+    display: none;
+    flex: 1;
+    text-align: right;
+    color: white;
+}
+
+mat-list {
+    margin: 0 -24px;
+    background: white;
+    overflow: hidden;
+    counter-reset: question;
+}
+
+mat-list-item {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 2px 2px 0 rgba(0, 0, 0, 0), 0 1px 5px 0 rgba(0,0,0,.12);
+    display: block;
+    height: auto;
+    padding: 20px 10px;
+    counter-increment: question;
+    cursor: pointer;
+}
+
+mat-list-item:hover {
+    background: rgba(63, 81, 181, 0.09);
+}
+
+mat-list-item.active {
+    background: #3f51b5;
+}
+
+mat-list-item.good {
+    background: #6eb53f;
+}
+
+mat-list-item.good span+mat-icon {
+    display: block;
+}
+
+mat-list-item.good mat-icon+mat-icon {
+    display: none;
+}
+
+mat-list-item.wrong {
+    background: #f44336;
+}
+
+mat-list-item.wrong span+mat-icon {
+    display: none;
+}
+
+mat-list-item.wrong mat-icon+mat-icon {
+    display: block;
+}
+
+mat-list-item.active span {
+    color: white;
+}
+
+mat-list-item.active span:before {
+    color: white;
+    border: 4px solid white;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-spinner {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin: auto auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.mat-fab {
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+span {
+    color: #4a4a4a;
+    padding-left: 60px;
+    position: relative;
+}
+
+span:before {
+    content: counter(question, upper-alpha);
+    display: inline-block;
+    font-size: 26px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border: 4px solid #4a4a4a;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #4a4a4a;
+    position: absolute;
+    left: 0;
+    top: -13px;
+}
+
+small {
+    color: #b5b5b5;
+}
+
+.image {
+    height: calc(100vh - 180px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+}
+
+.image img {
+    width: 100%;
+}
